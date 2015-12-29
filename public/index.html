@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="chaffMon">
+<head>
+    <meta charset="utf-8">
+    <title>Chaffpliance</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+    </style>
+
+    <script src="js/jquery.min.js"></script><!-- load jquery -->
+    <script src="js/angular.min.js"></script><!-- load angular -->
+    <script src="js/humanize-duration.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+    <script src="js/angular-timer.min.js"></script>
+    <script src="js/core.js"></script>
+
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1><strong>Chaffpliance</strong></h1>
+            <button type="button" class="btn btn-lg {{powerStatus}}" ng-click="powerToggle()"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></button>
+        </div>
+        <div class="text-center">
+	    <timer start-time="ontime"><h2><span class="label {{timerStatus}}">{{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</span></h2></timer>
+            <!--<h3><span class="label label-success">{{session.url}}</span></h3>-->
+            <br>
+            <h3><span class="label label-primary">{{session.sites}}</span> Sites Visited This Session</h3>
+            <br><br>
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Last 10 Sites Visited</strong></div>
+                <ul class="list-group"> 
+                    <li class="list-group-item" ng-repeat="site in sites"><strong>{{site.url}}</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
